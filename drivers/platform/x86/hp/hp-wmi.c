@@ -1612,12 +1612,12 @@ static bool has_omen_thermal_profile_ec_timer(void)
 			    board_name) >= 0;
 }
 
-inline int omen_thermal_profile_ec_flags_set(enum hp_thermal_profile_omen_flags flags)
+static inline int omen_thermal_profile_ec_flags_set(enum hp_thermal_profile_omen_flags flags)
 {
 	return ec_write(HP_OMEN_EC_THERMAL_PROFILE_FLAGS_OFFSET, flags);
 }
 
-inline int omen_thermal_profile_ec_timer_set(u8 value)
+static inline int omen_thermal_profile_ec_timer_set(u8 value)
 {
 	return ec_write(HP_OMEN_EC_THERMAL_PROFILE_TIMER_OFFSET, value);
 }
@@ -2887,8 +2887,8 @@ static void __exit hp_wmi_exit(void)
 		input_unregister_device(camera_shutter_input_dev);
 
 	if (hp_wmi_platform_dev) {
-		platform_device_unregister(hp_wmi_platform_dev);
 		platform_driver_unregister(&hp_wmi_driver);
+		platform_device_unregister(hp_wmi_platform_dev);
 	}
 }
 module_exit(hp_wmi_exit);
