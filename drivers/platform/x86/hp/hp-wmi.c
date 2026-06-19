@@ -2391,7 +2391,9 @@ static int __init hp_wmi_bios_setup(struct platform_device *device)
 	if (err < 0)
 		return err;
 
-	thermal_profile_setup(device);
+	err = thermal_profile_setup(device);
+	if (err < 0)
+		return err;
 
 	return 0;
 }
