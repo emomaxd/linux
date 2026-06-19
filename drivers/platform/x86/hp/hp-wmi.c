@@ -805,7 +805,7 @@ static int omen_thermal_profile_set(int mode)
 	 * 255, so let's mimic this behaviour to be as close as possible to
 	 * the original software.
 	 */
-	char buffer[2] = {-1, mode};
+	u8 buffer[2] = {0xFF, (u8)mode};
 	int ret;
 
 	ret = hp_wmi_perform_query(HPWMI_SET_PERFORMANCE_MODE, HPWMI_GM,
