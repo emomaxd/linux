@@ -986,7 +986,7 @@ static bool hp_wmi_get_sw_state(enum hp_wmi_radio r)
 
 static bool hp_wmi_get_hw_state(enum hp_wmi_radio r)
 {
-	int mask = 0x800 << (r * 8);
+	u32 mask = 0x800u << (r * 8u);
 
 	int wireless = hp_wmi_read_int(HPWMI_WIRELESS_QUERY);
 
