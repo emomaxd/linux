@@ -666,7 +666,7 @@ static int hp_wmi_perform_query(int query, enum hp_wmi_command command,
 	}
 
 	if (obj->type != ACPI_TYPE_BUFFER) {
-		pr_warn("query 0x%x returned an invalid object 0x%x\n", query, ret);
+		pr_warn("query 0x%x returned an invalid object 0x%x\n", query, obj->type);
 		ret = -EINVAL;
 		goto out_free;
 	}
