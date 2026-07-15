@@ -798,8 +798,8 @@ static int hp_wmi_get_tablet_mode(void)
 	ret = hp_wmi_perform_query(HPWMI_SYSTEM_DEVICE_MODE, HPWMI_READ,
 				   system_device_mode, zero_if_sup(system_device_mode),
 				   sizeof(system_device_mode));
-	if (ret < 0)
-		return ret;
+	if (ret)
+		return ret < 0 ? ret : -EINVAL;
 
 	return system_device_mode[0] == DEVICE_MODE_TABLET;
 }
